@@ -1,0 +1,6 @@
+---
+
+- hosts: raspberry-gw
+  roles:
+#    - { role: basic, become: yes }
+    - { role: ipv6-gateway, become: yes }

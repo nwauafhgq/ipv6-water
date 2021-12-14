@@ -1,0 +1,87 @@
+---
+
+- name: Create app directory
+  file:
+    path: "{{ app_dir }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+
+- name: Set timezone to Asia/Shanghai
+  community.general.timezone:
+    name: Asia/Shanghai
+
+- name: Allow 'sudo' group to have passwordless sudo
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: '^%sudo'
+    line: '%sudo ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+
+- name: Run the equivalent of "apt-get update" as a separate step
+  apt:
+    update_cache: yes
+
+- name: Update all packages to their latest version
+  apt:
+    name: "*"
+    state: latest
+
+- name: Install a list of packages
+  apt:
+    pkg:
+      - python3-pip
+      - python3-venv
+      - net-tools
+      - unzip
+      - vim
+      - curl
+      - minicom
+    state: latest
+
+- name: Remove dependencies that are no longer required
+  apt:
+    autoremove: yes
+
+- name: Enable IPv4 forwarding
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: yes
+    reload: yes
+
+- name: Create python venv
+  shell:
+    cmd: python3 -m venv venv
+  args:
+    creates: "{{ app_dir }}/venv"
+    chdir: "{{ app_dir }}"
+
+- name: upgrade pip
+  pip:
+    name: pip
+    state: latest
+    virtualenv: "{{ app_dir }}/venv"
+    extra_args: -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade
+
+- name: Copy requirements file
+  copy:
+    src: ../requirements.txt
+    dest: "{{ app_dir }}"
+    owner: pi
+    group: pi
+
+- name: Install requirements
+  pip:
+    requirements: "{{ app_dir }}/requirements.txt"
+    virtualenv: "{{ app_dir }}/venv"
+    extra_args: -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade
+
+- name: Disable serial-gettty service
+  systemd:
+    name: serial-getty@ttyAMA0.service
+    state: stopped
+    enabled: no

@@ -1,0 +1,4 @@
+---
+
+app_dir: /opt/ipv6_gateway
+gateway_files: ../apps

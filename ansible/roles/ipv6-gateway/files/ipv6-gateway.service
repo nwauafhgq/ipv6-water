@@ -1,0 +1,15 @@
+[Unit]
+Description=IPv6 Gateway
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/opt/ipv6_gateway/apps
+LimitNOFILE=4096
+ExecStart=/opt/ipv6_gateway/venv/bin/uvicorn main:app --host 0.0.0.0 --reload
+Environment="PATH=/opt/ipv6_gateway/venv/bin:$PATH"
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

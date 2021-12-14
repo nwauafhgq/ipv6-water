@@ -1,0 +1,25 @@
+---
+
+- name: Copy gateway files
+  copy:
+    src: "{{ gateway_files }}"
+    dest: "{{ app_dir }}"
+    owner: pi
+    group: pi
+  notify:
+    - restart ipv6-gateway
+
+- name: Copy service file
+  copy:
+    src: ipv6-gateway.service
+    dest: /etc/systemd/system/
+    owner: root
+    group: root
+  notify:
+    - daemon reload
+
+- name: enable ipv6 gateway service
+  systemd:
+    name: ipv6-gateway
+    state: started
+    enabled: yes
