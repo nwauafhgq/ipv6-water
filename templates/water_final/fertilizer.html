@@ -1,0 +1,129 @@
+{% extends 'water_final/base.html' %}
+
+
+{% load bootstrap4 %}
+
+{% block title %}
+  水肥灌溉一体化系统 - 配肥决策
+{% endblock %}
+
+{% block content %}
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>配肥决策</h1>
+      <div>
+        <span><a href="/knowledge">配肥参考文档</a></span>
+      </div>
+      <div class="decision">
+        <span>配肥决策:</span>
+        <div>
+          <div class="plan">
+            <span>施肥计划</span>
+            <form action="/fertilizer?action=add_plan" method="POST">
+              <table>
+                <tr>
+                  <td>品种</td>
+                  <td>时期</td>
+                  <td>开始时间</td>
+                  <td>结束时间</td>
+                  <td>氮肥</td>
+                  <td>磷肥</td>
+                  <td>钾肥</td>
+                  <td>微量元素（水）</td>
+                  <td>总量（ml）</td>
+                  <td>操作</td>
+                </tr>
+                <tr>
+                  <td><input type="text" name="name"></td>
+                  <td><input type="text" name="time"></td>
+                  <td><input type="text" name="start"></td>
+                  <td><input type="text" name="end"></td>
+                  <td><input type="text" name="dan"></td>
+                  <td><input type="text" name="lin"></td>
+                  <td><input type="text" name="jia"></td>
+                  <td><input type="text" name="wei"></td>
+                  <td><input type="text" name="total"></td>
+                  {% csrf_token %}
+                  <td>
+                    <button type="submit">添加</button>
+                  </td>
+                </tr>
+              </table>
+            </form>
+            <table>
+              <tr>
+                <td>序号</td>
+                <td>品种</td>
+                <td>时期</td>
+                <td>开始时间</td>
+                <td>结束时间</td>
+                <td>氮肥</td>
+                <td>磷肥</td>
+                <td>钾肥</td>
+                <td>微量元素（水）</td>
+                <td>总量（ml）</td>
+                <td>删除</td>
+              </tr>
+              {% for item in fertilizer_de %}
+                <form action="/fertilizer?action=delete_plan" method="POST">
+                  <tr>
+                    <input type="hidden" name="index" value={{ forloop.counter0 }}>
+                    {% csrf_token %}
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.time }}</td>
+                    <td>{{ item.start }}</td>
+                    <td>{{ item.end }}</td>
+                    <td>{{ item.dan }}</td>
+                    <td>{{ item.lin }}</td>
+                    <td>{{ item.jia }}</td>
+                    <td>{{ item.wei }}</td>
+                    <td>{{ item.total }}</td>
+                    <td>
+                      <button type="submit">删除</button>
+                    </td>
+                  </tr>
+                </form>
+              {% endfor %}
+            </table>
+
+          </div>
+          <div class="scheme">
+            <span>配肥方案库</span>
+            <div>
+              <input type="text" v-model="searchValue">
+              <button id="search" @click="search">搜索</button>
+            </div>
+            <table>
+              <tr>
+                <td>序号</td>
+                <td>品种</td>
+                <td>时期</td>
+                <td>氮肥</td>
+                <td>磷肥</td>
+                <td>钾肥</td>
+                <td>微量元素（水）</td>
+                <td>总量</td>
+                <td>操作</td>
+              </tr>
+              <tr v-for="(item,index) in formula">
+                <td>{{ index }}</td>
+                <td>{{ item.class }}</td>
+                <td>{{ item.period }}</td>
+                <td>{{ item.dan }}</td>
+                <td>{{ item.lin }}</td>
+                <td>{{ item.jia }}</td>
+                <td>{{ item.wei }}</td>
+                <td>{{ item.total }}</td>
+                <td>
+                  <button @click="executeShiFei(index)">执行</button>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

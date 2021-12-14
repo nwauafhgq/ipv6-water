@@ -1,0 +1,200 @@
+input,
+select {
+    outline: none;
+}
+
+#control {
+    padding: 0 8px;
+    margin: 0 auto;
+    width: 850px;
+    border: 1px solid red;
+}
+
+h2 {
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+}
+
+.nav button {
+    margin-right: 5px;
+}
+
+.nav label {
+    margin-left: 3px;
+}
+
+.nav input {
+    width: 100px;
+    border: none;
+}
+
+.nav span {
+    margin-left: 35px;
+}
+
+.device,
+.area,
+.watch,
+.decision,
+.execute,
+.alarm,
+.data {
+    margin-top: 10px;
+    border: 1px dashed red;
+    padding: 3px;
+}
+
+.device label {
+    margin-right: 2px;
+}
+
+.device button {
+    background-color: red;
+    color: white;
+    margin-left: 200px;
+}
+
+.area select {
+    margin-left: 10px;
+}
+
+#method {
+    margin-left: 50px;
+}
+
+.watch input {
+    text-align: center;
+    width: 50px;
+    margin: 0 11px 3px;
+}
+
+.watch .environmentWatch,
+.watch .deviceWatch,
+.watch .irrigateWatch {
+    margin-top: 5px;
+    margin-left: 15px;
+    border-top: 1px dashed black;
+}
+
+.watch .environmentWatch label,
+.watch .deviceWatch label,
+.watch .irrigateWatch label {
+    margin-left: 5px;
+}
+
+#areaName {
+    margin-left: 5px;
+    text-align: center;
+    width: 80px;
+}
+
+.data table,
+.irrigateWatch table,
+.decision table {
+    border-collapse: collapse;
+    width: 90%;
+    margin-top: 10px;
+    margin-left: 25px;
+    border-top: none;
+}
+
+.data table tr,
+.irrigateWatch table tr,
+.decision table tr {
+    margin-top: 5px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.data table td,
+.irrigateWatch table tr td,
+.decision table td {
+    margin-left: 0px;
+    text-align: center;
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
+}
+
+.decision .plan,
+.decision .scheme,
+.repository {
+    margin-left: 15px;
+    margin-top: 5px;
+    height: 400px;
+    border-top: 1px dashed black;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.decision .plan input {
+    width: 50px;
+}
+
+.decision table {
+    margin-top: 20px;
+}
+
+.decision .scheme input {
+    height: 25px;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 200px;
+}
+
+#search {
+    height: 30px;
+    width: 80px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.execute table {
+    border-collapse: collapse;
+    width: 70%;
+    margin: 10px auto;
+}
+
+.execute table tr {
+    height: 30px;
+}
+
+.execute table td {
+    line-height: 30px;
+    text-align: center;
+}
+
+.execute table span {
+    margin-left: 14px;
+}
+
+.execute input {
+    width: 80px;
+    text-align: center;
+}
+
+.execute button {
+    width: 80px;
+    height: 26px;
+    margin-left: 220px;
+}
+
+.alarm label {
+    margin-left: 30px;
+}
+
+.data .clearContent {
+    margin-left: 650px;
+}
+
+.data .irrgRecord,
+.data .alarmRecord {
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 98%;
+    height: 300px;
+    border: 1px dashed red;
+    margin-top: 5px;
+    padding-left: 15px;
+}

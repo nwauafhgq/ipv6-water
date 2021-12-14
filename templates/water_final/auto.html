@@ -1,0 +1,42 @@
+{% extends 'water_final/base.html' %}
+
+
+{% load bootstrap4 %}
+
+{% block title %}
+  水肥灌溉一体化系统 - 智能灌溉
+{% endblock %}
+
+{% block content %}
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>智能灌溉</h1>
+      <div class="execute">
+        <span>智能灌溉</span>
+        <div>
+          <table>
+            <tr>
+              <td>氮肥</td>
+              <td>磷肥</td>
+              <td>钾肥</td>
+              <td>微量元素（水）</td>
+              <td>总量（ml）</td>
+            </tr>
+            <tr>
+              <td><input type="text" v-model="dan"><span>:</span></td>
+              <td><input type="text" v-model="lin"><span> :</span></td>
+              <td><input type="text" v-model="jia"><span>:</span></td>
+              <td><input type="text" v-model="wei"></td>
+              <td><input type="text" v-model="total"></td>
+            </tr>
+          </table>
+          <div>
+            <button>中断</button>
+            <button @click="itellExecute">执行</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'water_final/base.html' %}
+
+
+{% load bootstrap4 %}
+
+{% block title %}
+  水肥灌溉一体化系统 - 设备管理
+{% endblock %}
+
+{% block content %}
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>设备管理</h1>
+      <div class="device">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">序号</th>
+            <th scope="col">设备ID</th>
+            <th scope="col">设备状态</th>
+            <th scope="col">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>16550F</td>
+            <td>离线</td>
+            <td>
+              <input type="radio" name="status1" id="switchOpen1">开
+              &nbsp;&nbsp;
+              <input type="radio" name="status1" id="switchOff1" checked>关
+              &nbsp;&nbsp
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>165581</td>
+            <td>在线</td>
+            <td><input type="radio" name="status2" id="switchOpen2">开
+              &nbsp;&nbsp;
+              <input type="radio" name="status2" id="switchOff2" checked>关
+              &nbsp;&nbsp;
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <br/>
+      <button id="submit" type="button" class="btn btn-primary">提交</button>
+    </div>
+  </main>
+  <script>
+      let counter = 0;
+
+      function openoff() {
+          counter++;
+          if (counter % 2 == 0) {
+              document.getElementById('switchOpen').checked = true;
+              document.getElementById('onoff').className = "btn btn-danger";
+              document.getElementById('onoff').innerText = "关闭";
+          } else {
+              document.getElementById('switchOff').checked = true;
+              document.getElementById('onoff').className = "btn btn-success";
+              document.getElementById('onoff').innerText = "启动";
+          }
+      }
+
+  </script>
+{% endblock %}

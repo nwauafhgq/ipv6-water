@@ -1,0 +1,23 @@
+.banxin {
+    width: 850px;
+    margin-left: 200px;
+}
+
+a {
+    text-decoration: none;
+    list-style: none;
+}
+
+img {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}

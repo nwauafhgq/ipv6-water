@@ -1,0 +1,37 @@
+{% extends 'water_final/bootstrap.html' %}
+
+
+{% load bootstrap4 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block title %}
+    水肥灌溉一体化系统 - 登录
+{% endblock %}
+
+{% block bootstrap4_content %}
+    {% load static %}
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+    <form class="form-signin" action="/login" method="POST">
+      <h1 class="h3 mb-3 font-weight-normal">水肥灌溉一体化系统</h1>
+        {% if login_error is not None %}
+        <div class="alert alert-danger" role="alert">
+            {{ login_error }}
+        </div>
+        {% endif %}
+      <label for="inputUsername" class="sr-only">用户名</label>
+      <input type="text" id="inputUsername" class="form-control" name="username" placeholder="用户名" required autofocus>
+      <label for="inputPassword" class="sr-only">密码</label>
+      <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required>
+      {% csrf_token %}
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> 记住我
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2020-2021 西北农林科技大学</p>
+    </form>
+
+{% endblock %}

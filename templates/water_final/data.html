@@ -1,0 +1,80 @@
+{% extends 'water_final/base.html' %}
+
+
+{% load bootstrap4 %}
+
+{% block title %}
+  水肥灌溉一体化系统 - 数据记录
+{% endblock %}
+
+{% block content %}
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>数据记录</h1>
+      <div class="data">
+        <span>数据记录：</span>
+        <div class="irrgRecord">
+          <span>灌溉记录</span>
+          <button class="clearContent" @click="clearAllIrrgRecord">清空记录</button>
+          <table>
+            <tr>
+              <td>序号</td>
+              <td>灌区</td>
+              <td>品种</td>
+              <td>时期</td>
+              <td>灌溉时间</td>
+              <td>氮肥</td>
+              <td>磷肥</td>
+              <td>钾肥</td>
+              <td>微量元素</td>
+              <td>总量</td>
+              <td>执行情况</td>
+              <td>删除</td>
+            </tr>
+            <tr v-for="(item,index) in irrgRecord">
+              <td>{{ index }}</td>
+              <td>{{ item.irrgName }}</td>
+              <td>{{ item.class }}</td>
+              <td>{{ item.period }}</td>
+              <td>{{ item.time }}</td>
+              <td>{{ item.dan }}</td>
+              <td>{{ item.lin }}</td>
+              <td>{{ item.jia }}</td>
+              <td>{{ item.wei }}</td>
+              <td>{{ item.total }}</td>
+              <td>{{ item.isSuccess }}</td>
+              <td>
+                <button @click="clearIrrgRecord(index)">删除</button>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+        <div class="alarmRecord">
+          <span>报警记录</span>
+          <button class="clearContent" @click="clearAllAlarmRecord">清空记录</button>
+          <table>
+            <tr>
+              <td>序号</td>
+              <td>报警类别</td>
+              <td>灌区名称</td>
+              <td>时间</td>
+              <td>删除</td>
+            </tr>
+            <tr v-for="(item,index) in alarmRecord">
+              <td>{{ index }}</td>
+              <td>{{ item.class }}</td>
+              <td>{{ item.irrgName }}</td>
+              <td>{{ item.time }}</td>
+              <td>
+                <button @click="clearAlarmRecord(index)">删除</button>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+{% endblock %}

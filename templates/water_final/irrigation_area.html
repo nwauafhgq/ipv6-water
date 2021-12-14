@@ -1,0 +1,47 @@
+{% extends 'water_final/base.html' %}
+
+
+{% load bootstrap4 %}
+
+{% block title %}
+  水肥灌溉一体化系统 - 灌区管理
+{% endblock %}
+
+{% block content %}
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>灌区管理</h1>
+      <div class="area">
+        <label for="">灌区管理：</label>
+        <label for=""></label>
+        <select name="select" id="" v-model="irrgName" @change="irrgChange(irrgName)">
+          <option value="">请选择</option>
+          <option v-for="item in areas">灌区一</option>
+          <option v-for="item in areas">灌区二</option>
+          <option v-for="item in areas">灌区三</option>
+          <option v-for="item in areas">灌区四</option>
+        </select>
+        <label for="" id="method">灌溉模式：</label>
+        <select name="" id="">
+          <option>按浓度进行灌溉</option>
+          <option>按EC值和PH值进行灌溉</option>
+        </select>
+        <br/>
+        <button id="submit" type="button" class="btn btn-primary" onclick="submit()">提交</button>
+        <div class="toast">
+          <div class="toast-header">
+            提示
+          </div>
+          <div class="toast-body">
+            提交成功！
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    function submit(){
+        $('.toast').toast('show');
+    }
+  </script>
+{% endblock %}

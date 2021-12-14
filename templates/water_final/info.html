@@ -1,0 +1,100 @@
+{% extends 'water_final/base.html' %}
+
+
+{% load bootstrap4 %}
+
+{% block title %}
+  水肥灌溉一体化系统 - 信息监测
+{% endblock %}
+
+{% block content %}
+  <main role="main" class="container">
+    <div class="jumbotron">
+      <h1>信息监测</h1>
+      <div class="watch">
+        <span>信息监测:</span>
+        <div class="environmentWatch">
+          <span>环境监测：</span>
+          <div>
+            <label>土壤PH:</label><input type="text" readonly value="7.0">
+            <label>土壤电导率:</label><input type="text" readonly value="7">
+            <label>土壤温度:</label><input type="text" readonly value="18">
+            <label>空气温度:</label><input type="text" readonly value="20">
+            <label>空气湿度:</label> <input type="text" readonly value="0.8">
+          </div>
+        </div>
+        <div class="deviceWatch">
+          <span>设备监测：</span>
+          <div class="danFei">
+            <label for="">氮肥控制器:</label>
+            <label>电磁阀状态</label>
+            <input type="radio" id="danFeiSwitchOpen" name="danFeiSwitch" checked>开 &nbsp;&nbsp;
+            <input type="radio" id="danFeiSwitchOff" name="danFeiSwitch" disabled>关
+            <label>流量计状态</label>
+            <input type="radio" id="danFeiOpen" name="danFei" checked>开 &nbsp;&nbsp;
+            <input type="radio" id="danFeiOff" name="danFei" disabled>关
+          </div>
+          <div class="jiaFei">
+            <label for="">磷肥控制器:</label>
+            <label>电磁阀状态</label>
+            <input type="radio" id="linFeiSwitchOpen" name="linFeiSwitch" checked>开 &nbsp;&nbsp;
+            <input type="radio" id="linFeiSwitchOff" name="linFeiSwitch" disabled>关
+            <label>流量计状态</label>
+            <input type="radio" id="linFeiOpen" name="linFei" checked>开 &nbsp;&nbsp;
+            <input type="radio" id="linFeiOff" name="linFei" disabled>关
+          </div>
+          <div class="danFei">
+            <label for="">钾肥控制器:</label>
+            <label>电磁阀状态</label>
+            <input type="radio" id="jiaFeiSwitchOpen" name="jiaFeiSwitch" disabled>开 &nbsp;&nbsp;
+            <input type="radio" id="jiaFeiSwitchOff" name="jiaFeiSwitch" checked>关
+            <label>流量计状态</label>
+            <input type="radio" id="jiaFeiOpen" name="jiaFei" disabled>开 &nbsp;&nbsp;
+            <input type="radio" id="jiaFeiOff" name="jiaFei" checked>关
+          </div>
+          <div class="wei">
+            <label for="">微量元素（水）控制器:</label>
+            <label>电磁阀状态</label>
+            <input type="radio" id="weiSwitchOpen" name="weiSwitch" disabled>开 &nbsp;&nbsp;
+            <input type="radio" id="weiSwitchOff" name="weiSwitch" checked>关
+            <label>流量计状态</label>
+            <input type="radio" id="weiOpen" name="wei" disabled>开 &nbsp;&nbsp;
+            <input type="radio" id="weiOff" name="wei" checked>关
+          </div>
+
+        </div>
+        <div class="irrigateWatch">
+          <div>灌溉监测:</div>
+          <label for="">灌区名称：</label><input type="text" id="areaName" value="灌区一">
+          <table>
+            <tr>
+              <td></td>
+              <td>氮肥</td>
+              <td>磷肥</td>
+              <td>钾肥</td>
+              <td>微量元素（水）</td>
+              <td>总量（ml）</td>
+            </tr>
+            <tr>
+              <td>目标流量</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>当前流量</td>
+              <td>10</td>
+              <td>15</td>
+              <td></td>
+              <td></td>
+              <td>25</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+{% endblock %}
